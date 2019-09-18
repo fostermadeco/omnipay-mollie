@@ -76,7 +76,7 @@ abstract class AbstractMollieRequest extends AbstractRequest
             } elseif ($item instanceof Item) {
                 $orderItems[] = $item;
             } else {
-                throw new \InvalidArgumentException('Item should be an instance of ' . Item::class);
+                throw new \InvalidArgumentException('Item should be an associative array or an instance of ' . Item::class);
             }
         }
 
