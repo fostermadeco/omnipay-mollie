@@ -73,7 +73,9 @@ abstract class AbstractMollieRequest extends AbstractRequest
         foreach ($items as $item) {
             if (is_array($item)) {
                 $orderItems[] = new Item($item);
-            } elseif (! ($item instanceof Item)) {
+            } elseif ($item instanceof Item) {
+                $orderItems[] = $item;
+            } else {
                 throw new \InvalidArgumentException('Item should be an instance of ' . Item::class);
             }
         }
