@@ -272,7 +272,9 @@ class CreateOrderRequest extends AbstractMollieRequest
             ];
 
             // Strip null values
-            $lines[] = array_filter($data);
+            $lines[] = array_filter($data, function ($line) {
+                return null !== $line;
+            });
         }
 
         return $lines;
