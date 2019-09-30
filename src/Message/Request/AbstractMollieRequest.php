@@ -95,7 +95,8 @@ abstract class AbstractMollieRequest extends AbstractRequest
             $method,
             $this->baseUrl . $this->apiVersion . $endpoint,
             [
-                'Authorization' => 'Bearer ' . $this->getApiKey()
+                'Authorization' => 'Bearer ' . $this->getApiKey(),
+                'Content-Type' => 'application/json',
             ],
             ($data === null || $data === []) ? null : json_encode($data)
         );
