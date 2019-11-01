@@ -4,7 +4,7 @@ namespace Omnipay\Mollie\Message\Request;
 
 use Omnipay\Common\ItemBag;
 use Omnipay\Common\Message\AbstractRequest;
-use Omnipay\Mollie\Item;
+use Omnipay\Common\ItemInterface;
 
 /**
  * This class holds all the common things for all of Mollie requests.
@@ -73,10 +73,10 @@ abstract class AbstractMollieRequest extends AbstractRequest
         foreach ($items as $item) {
             if (is_array($item)) {
                 $orderItems[] = new Item($item);
-            } elseif ($item instanceof Item) {
+            } elseif ($item instanceof ItemInterface) {
                 $orderItems[] = $item;
             } else {
-                throw new \InvalidArgumentException('Item should be an associative array or an instance of ' . Item::class);
+                throw new \InvalidArgumentException('Item should be an associative array or implement  ' . ItemInterface::class);
             }
         }
 
